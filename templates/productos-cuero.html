@@ -1,0 +1,48 @@
+{% extends './base.html' %}
+
+{% block title %} Productos en Cuero {% endblock %}
+
+{% block body %}
+<!--div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Lista de Productos Lía Alessia en Cuero</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prodCuero in productosCuero %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{prodCuero}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div-->
+
+<div class="gallery">
+    {% for prodCuero in productosCuero %}
+        <div class="content">
+            {% if prodCuero.codigo == "KATY" %}
+            <!--img src="{{prodCuero.urlImagen}}" alt="No se pudo cargar la imagen..."-->
+                <img class="img-product" src="../static/imagenes/Zapatillas-41.jpg" alt="No se pudo cargar la imagen...">
+            {% elif prodCuero.codigo == "JADE" %}
+                <img class="img-product" src="../static/imagenes/Zapatillas-43.jpg" alt="No se pudo cargar la imagen...">
+            {% elif prodCuero.codigo == "RIMEL" %}
+                <img class="img-product" src="../static/imagenes/rimel-vison.jpg" alt="No se pudo cargar la imagen...">
+            {% endif %}
+            <h3>{{prodCuero.codigo}}</h3>
+            <h6>${{"%.0f"|format(prodCuero.precio)}}</h6>
+            <h7>3 cuotas sin interés de ${{"%.2f"|format(prodCuero.precio/3)}}</h7>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,169 @@
+/*Header que contiene la sección superior de la página y el menú de navegación*/
+.sticky-header { 
+    position: sticky; /*Mantiene fijo el header al scrollear en la página*/
+    top: 0px;
+    width: 100%;
+}
+
+/* Primer sección de la página, muestra el mensaje de: • 3 cuotas sin interés, etc */
+.section-advertising {
+    background-color:black;
+    height: 40px; /*altura de la sección*/
+}
+
+.text-center{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #ffffff;
+    line-height:2.5em /*Debería usar vertical-align: middle; pero no funciona*/
+}
+
+/*Menú de navegación, ya está prediseñado en bootstrap, sólo le modifico algunas propiedades*/
+.navbar {
+    background-color:white
+}
+
+
+.navbar-nav {
+    /*display: flex;
+    align-items: center;
+    justify-content: center;*/
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    text-decoration: underline;
+}
+
+.nav-link {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+th,td,h1,h2,a{
+    text-align: center;
+    vertical-align: middle;
+}
+
+h3{
+	text-align: center;
+	font-size: 20px;
+	margin: 0;
+	padding-top: 20px;
+}
+
+h6{
+	font-size: 26px;
+	text-align: center;
+	color: rgb(224, 51, 51);
+	margin: 0;
+	font-weight: bold;
+	padding-top: 10px;
+}
+
+h7{
+	font-size: 15px;
+	text-align: center;
+	color: rgb(0, 0, 0);
+	margin: 0;
+	padding-top: 10px;
+}
+
+#customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}
+
+.buttonEdit {
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	background-color:#33bdef;
+	border-radius:6px;
+	border:1px solid #057fd0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+}
+.buttonEdit:hover {
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	background-color:#019ad2;
+}
+.buttonEdit:active {
+	position:relative;
+	top:1px;
+}
+
+.buttonDelete {
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:linear-gradient(to bottom, #ed3434 5%, #d10202 100%);
+	background-color:#ed3434;
+	border-radius:6px;
+	border:1px solid #cf0606;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+}
+.buttonDelete:hover {
+	background:linear-gradient(to bottom, #d10202 5%, #ed3434 100%);
+	background-color:#d10202;
+}
+.buttonDelete:active {
+	position:relative;
+	top:1px;
+}
+
+
+/*
+.buttonAdd {
+	box-shadow: 0px 1px 0px 0px #f0f7fa;
+	background:linear-gradient(to bottom, #33bdef 5%, #019ad2 100%);
+	background-color:#33bdef;
+	border-radius:6px;
+	border:1px solid #057fd0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px;
+	text-decoration:none;
+	text-shadow:0px -1px 0px #5b6178;
+}
+.buttonAdd:hover {
+	background:linear-gradient(to bottom, #019ad2 5%, #33bdef 100%);
+	background-color:#019ad2;
+}
+.buttonAdd:active {
+	position:relative;
+	top:1px;
+}
+*/

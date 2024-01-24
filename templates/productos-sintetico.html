@@ -1,0 +1,50 @@
+{% extends './base.html' %}
+
+{% block title %} Productos en Sintético {% endblock %}
+
+{% block body %}
+<!--div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Lista de Productos Lía Alessia en Sintético</h1>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prodSintetico in productosSintetico %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{prodSintetico}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div-->
+
+<div class="galery">
+    {% for prodSintetico in productosSintetico %}
+        <div class="content">
+            {% if prodSintetico.codigo == "SOFIA" %}
+                <img src="../static/imagenes/sofia-negra.jpg" class="img-fluid" alt="No se pudo cargar la imagen...">
+            {% elif prodSintetico.codigo == "TINA" %}
+                <img src="../static/imagenes/nike-blanca.jpg" class="img-fluid" alt="No se pudo cargar la imagen...">
+            {% elif prodSintetico.codigo == "ADIDAS" %}
+                <img src="../static/imagenes/adidas-negra.jpg" class="img-fluid" alt="No se pudo cargar la imagen...">
+            {% elif prodSintetico.codigo == "ELASTIZADAS" %}
+                <img src="../static/imagenes/Zapatillas-39.jpg" class="img-fluid" alt="No se pudo cargar la imagen...">
+            {% endif %}
+            <h3>{{prodSintetico.codigo}}</h3>
+            <h6>${{"%.0f"|format(prodSintetico.precio)}}</h6>
+            <h7>3 cuotas sin interés de ${{"%.2f"|format(prodSintetico.precio/3)}}</h7>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
