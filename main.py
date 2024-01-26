@@ -1,6 +1,9 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, flash
 from flask_mysqldb import MySQL
 from flask_cors import CORS, cross_origin
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Email
 #import os
 #import pandas as pd
 
@@ -9,6 +12,7 @@ app = Flask(__name__)
 
 cors = CORS(app)
 
+app.config['SECRET_KEY'] = 'my super key xd'
 app.config['CORS_HEADERS'] = 'Content-Type'
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
@@ -16,6 +20,14 @@ app.config['MYSQL_PASSWORD'] = ''
 app.config['MYSQL_DB'] = 'lia_alessia'
 
 mysql = MySQL(app)
+
+#create a Form Class
+class ContactForm(FlaskForm):
+    name = StringField("Nombre", validators=[DataRequired()])
+    email = StringField("Email", validators=[Email()])
+    phone = StringField("Teléfono", validators=[DataRequired()])
+    msg = TextAreaField("Dejanos tu mensaje", validators=[DataRequired()])
+    submit = SubmitField("ENVIAR")
 
 @app.route('/')
 def principal():
@@ -40,10 +52,6 @@ def showLeatherProducts():
                    }
         prodsCuero.append(productoCuero)
 
-    #prodsCuero = []
-    #for row in result:
-        #prodsCuero.append(row[0])
-
     return render_template('productos-cuero.html',productosCuero=prodsCuero)
 
 @app.route('/sintetico')
@@ -65,14 +73,30 @@ def showSyntheticProducts():
                    }
         prodsSintetico.append(productoSintetico)
 
-    #prodsSintetico = []
-    #for row in result:
-        #prodsSintetico.append(row[0])
     return render_template('productos-sintetico.html',productosSintetico=prodsSintetico)
 
-@app.route('/contacto')
+@app.route('/contacto', methods=['GET','POST'])
 def contact():
-    return render_template('contacto.html')
+    name = None
+    email = None
+    phone = None
+    msg = None
+    form = ContactForm()
+
+    #Validate Form
+    if form.validate_on_submit():
+        name = form.name.data
+        email = form.email.data
+        phone = form.phone.data
+        msg = form.msg.data
+        form.name.data = ''
+        form.email.data = ''
+        form.phone.data = ''
+        form.msg.data = ''
+
+        flash("Formulario enviado correctamente.")
+
+    return render_template('contacto.html', name=name, email=email, phone=phone, msg=msg, form=form)
 
 @app.route('/sobre-nosotros')
 def aboutUs():

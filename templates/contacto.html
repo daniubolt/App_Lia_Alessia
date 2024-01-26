@@ -3,7 +3,42 @@
 {% block title %} Contacto {% endblock %}
 
 {% block body %}
+
+{% for message in get_flashed_messages() %}
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+
+{% endfor %}
+
 <h1>Página de Contacto de Lía Alessia</h1>
+
+{% if name and email and phone and msg %}
+    <h6>Hemos recibido tu información correctamente. En breve nos pondremos en contacto contigo.<br/>
+    ¡Saludos!
+    </h6>
+{% else %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <br/>
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+        <br/>
+        {{ form.email.label(class="form-label") }}
+        {{ form.email(class="form-control") }}
+        <br/>
+        {{ form.phone.label(class="form-label") }}
+        {{ form.phone(class="form-control") }}
+        <br/>
+        {{ form.msg.label(class="form-label") }}
+        {{ form.msg(class="form-control") }}
+        <br/>
+        {{ form.submit(class="btn btn-primary") }}
+    </form>
+{% endif %}
+
 {% endblock %}
 
 
